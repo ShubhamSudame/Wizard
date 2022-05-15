@@ -1,0 +1,80 @@
+.col-sm-4 {
+    padding-bottom: 20px;
+  }
+  
+  .modal-footer {
+    justify-content: space-evenly;
+  }
+  
+  .modal-footer .btn {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .carousel-nav {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100%;
+  }
+  
+  .carousel-nav li {
+    display: flex;
+    width: 100%;
+  }
+  .carousel-nav a {
+    background: #ddd;
+    color: #666;
+    display: flex;
+    height: 44px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    line-height: 44px;
+    padding: 0 6px;
+    padding-left: 12px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    justify-content: center;
+  }
+  .carousel-nav a:before, .carousel-nav a:after {
+    content: "";
+    display: flex;
+    position: absolute;
+    top: 0;
+    border-top: 22px solid transparent;
+    border-bottom: 22px solid transparent;
+    width: 100%;
+  }
+  .carousel-nav a:before {
+    border-left: 11px solid #fff;
+    left: 0;
+  }
+  .carousel-nav a:after {
+    border-left: 11px solid #ddd;
+    left: 100%;
+    width: 0;
+    height: 0;
+    z-index: 2;
+  }
+  .carousel-nav .active a {
+    background: #1c9fcc;
+    color: #fff;
+  }
+  
+  .carousel-nav .complete a {
+    background: green;
+    color: #fff;
+  }
+  .carousel-nav .active a:after {
+    border-left: 11px solid #1c9fcc;
+  }
+  
+  .carousel-nav .complete a:after {
+    border-left: 11px solid green;
+  }
+  
+  span {
+    padding-right: 5px;
+  }
+  

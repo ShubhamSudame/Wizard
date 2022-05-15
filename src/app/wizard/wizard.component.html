@@ -1,0 +1,37 @@
+<button type="button" class="btn btn-primary" (click)="openWizardModal(wizard)">Open Wizard</button>
+<ng-template #wizard>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Wizard</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <ul class="carousel-nav">
+        <li *ngFor="let item of items" [ngClass]="visited.has(item.index) ? 'complete': item.index === activeIndex ? 'active': ''">
+            <a>
+              <span>{{ item.index + 1 }} </span>
+              <span>{{ item.label }}</span>
+            </a>
+        </li>
+      </ul>
+    </div>
+    <form [formGroup]="parentForm" class="form-ui">
+        <div [ngSwitch]="activeIndex" formArrayName="wizardForms">
+            <ng-container *ngTemplateOutlet="forms"></ng-container>
+        </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <div class="col-xl-8 col-lg-6 col-md-4 col-sm-2">
+      <button type="button" class="btn btn-primary mr-auto"  *ngIf="activeIndex" (click)="previous()"> Previous </button>
+    </div>
+    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-2">
+        <button type="button" class="btn btn-danger" (click)="hide()"> Cancel </button>
+    </div>
+    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-2">
+        <button type="button" class="btn btn-primary" (click)="next()" [disabled]="activeIndex === items.length - 1 ? !parentForm.valid : !parentForm.get('wizardForms')?.get(activeIndex.toString())?.valid"><span>{{ activeIndex === items.length - 1 ? 'Submit': 'Next' }}</span></button>
+    </div>
+  </div>
+</ng-template>

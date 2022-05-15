@@ -1,0 +1,17 @@
+<ng-template #forms>
+    <form [formGroup]="wizardForm" class="form-ui">
+        <div [ngSwitch]="activeIndex" formArrayName="wizardForms">
+            <div formGroupName="0" *ngSwitchCase="0">
+                <!-- Enter Form structure here -->
+                <h1> Form 1 </h1>
+            </div>
+            <div formGroupName="1" *ngSwitchCase="1">
+                <h1> Form 2 </h1>
+            </div>
+            <div formGroupName="2" *ngSwitchCase="2">
+                <h1> Form 3 </h1>
+            </div>
+        </div>
+    </form>
+</ng-template>
+<app-wizard [items]="items" [(activeIndex)]="activeIndex" [parentForm]="wizardForm" [forms]="forms"></app-wizard>
