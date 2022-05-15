@@ -30,24 +30,18 @@ export class FormsComponent implements OnInit {
     this.wizardForm = new FormGroup({
       wizardForms: new FormArray([
         new FormGroup({
-          type: new FormControl('dsabdhasdyu', [Validators.required]),
-          priority: new FormControl(1, [Validators.required]),
+          to: new FormControl('dsabdhasdyu', [Validators.email]),
           subject: new FormControl('dsadasda', [Validators.required]),
           description: new FormControl('dasdasdasd', [Validators.required]),
-          status: new FormControl({ value: 2, disabled: true }),
-          source: new FormControl({ value: 1, disabled: true })
         }),
         new FormGroup(
           {
-          attachmentOptions: new FormControl({ value: null, disabled: false }),
-          noAttachment: new FormControl(false),
+            notificationsAlert: new FormControl(false),
           },
         ),
         new FormGroup({
-          custom_fields: new FormGroup({
-            cf_first_name: new FormControl(null),
-            cf_last_name: new FormControl(null)
-          }),
+          first_name: new FormControl(null),
+          last_name: new FormControl(null),
           email: new FormControl('abc@gmail.com', [Validators.required, Validators.email]),
           cc_emails: new FormControl([]),
         })
