@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-forms',
@@ -22,28 +22,28 @@ export class FormsComponent implements OnInit {
     }
   ];
   activeIndex!: number;
-  wizardForm!: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  wizardForm!: UntypedFormGroup;
+  constructor(private fb: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     this.activeIndex = 0;
-    this.wizardForm = new FormGroup({
-      wizardForms: new FormArray([
-        new FormGroup({
-          to: new FormControl('dsabdhasdyu', [Validators.email]),
-          subject: new FormControl('dsadasda', [Validators.required]),
-          description: new FormControl('dasdasdasd', [Validators.required]),
+    this.wizardForm = new UntypedFormGroup({
+      wizardForms: new UntypedFormArray([
+        new UntypedFormGroup({
+          to: new UntypedFormControl('dsabdhasdyu@gmail.com', [Validators.email]),
+          subject: new UntypedFormControl('dsadasda', [Validators.required]),
+          description: new UntypedFormControl('dasdasdasd', [Validators.required]),
         }),
-        new FormGroup(
+        new UntypedFormGroup(
           {
-            notificationsAlert: new FormControl(false),
+            notificationsAlert: new UntypedFormControl(false),
           },
         ),
-        new FormGroup({
-          first_name: new FormControl(null),
-          last_name: new FormControl(null),
-          email: new FormControl('abc@gmail.com', [Validators.required, Validators.email]),
-          cc_emails: new FormControl([]),
+        new UntypedFormGroup({
+          first_name: new UntypedFormControl(null),
+          last_name: new UntypedFormControl(null),
+          email: new UntypedFormControl('abc@gmail.com', [Validators.required, Validators.email]),
+          cc_emails: new UntypedFormControl([]),
         })
       ])
     });

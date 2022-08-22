@@ -4,12 +4,21 @@
             <div formGroupName="0" *ngSwitchCase="0">
                 <!-- Enter Form structure here -->
                 <h1> Form 1 </h1>
+                <input class="form-control" type="email" formControlName="to" />
+                <input class="form-control" type="text" formControlName="subject" />
+                <input class="form-control" type="text" formControlName="description" />
             </div>
             <div formGroupName="1" *ngSwitchCase="1">
                 <h1> Form 2 </h1>
+                <input id="notificationsAlert" class="form-control" type="radio" formControlName="notificationsAlert" />
+                <label for="notificationsAlert">Notifications Alert</label><br>
             </div>
             <div formGroupName="2" *ngSwitchCase="2">
                 <h1> Form 3 </h1>
+                <input class="form-control" type="text" formControlName="first_name"/>
+                <input class="form-control" type="text" formControlName="last_name"/>
+                <input class="form-control" type="email" formControlName="email"/>
+                <input class="form-control" type="email" formControlName="cc_emails"/>
             </div>
         </div>
     </form>

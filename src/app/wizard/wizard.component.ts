@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -24,7 +24,7 @@ export class WizardComponent implements OnInit {
   visited!: Set<number>;
 
   @Input() forms!: TemplateRef<any>;
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
               private modalService: BsModalService) { }
 
   ngOnInit(): void {
