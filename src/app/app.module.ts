@@ -7,7 +7,8 @@ import { WizardComponent } from './wizard/wizard.component';
 import { FormsComponent } from './forms/forms.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
-
+import { EditorModule } from 'primeng/editor';
+import { CheckboxModule } from 'primeng/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    EditorModule,
+    CheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

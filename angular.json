@@ -31,10 +31,21 @@
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/primeicons/primeicons.css",
+              "./node_modules/primeng/resources/themes/nova/theme.css",
+              "./node_modules/primeng/resources/primeng.min.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "./node_modules/quill/dist/quill.core.css",
+              "./node_modules/quill/dist/quill.snow.css",
               "src/styles.css"
             ],
             "scripts": [
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./node_modules/moment/moment.js",
+              "./node_modules/quill/dist/quill.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "quill"
             ]
           },
           "configurations": {
@@ -103,6 +114,51 @@
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "wizard:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "wizard:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "ct": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "wizard:serve",
+            "watch": true,
+            "headless": false,
+            "testingType": "component"
+          },
+          "configurations": {
+            "development": {
+              "devServerTarget": "wizard:serve:development"
+            }
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "wizard:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "wizard:serve:production"
+            }
           }
         }
       }

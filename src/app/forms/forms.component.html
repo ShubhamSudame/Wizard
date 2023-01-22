@@ -1,26 +1,88 @@
 <ng-template #forms>
-    <form [formGroup]="wizardForm" class="form-ui">
-        <div [ngSwitch]="activeIndex" formArrayName="wizardForms">
-            <div formGroupName="0" *ngSwitchCase="0">
-                <!-- Enter Form structure here -->
-                <h1> Form 1 </h1>
-                <input class="form-control" type="email" formControlName="to" />
-                <input class="form-control" type="text" formControlName="subject" />
-                <input class="form-control" type="text" formControlName="description" />
+  <form [formGroup]="wizardForm" class="form-ui">
+    <div [ngSwitch]="activeIndex" formArrayName="wizardForms">
+      <div formGroupName="0" *ngSwitchCase="0">
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="to" class="col-form-label required">To</label>
+          </div>
+          <div class="col-sm-9">
+            <div class="form-group row mb-2">
+              <input class="form-control" type="email" formControlName="to" />
             </div>
-            <div formGroupName="1" *ngSwitchCase="1">
-                <h1> Form 2 </h1>
-                <input id="notificationsAlert" class="form-control" type="radio" formControlName="notificationsAlert" />
-                <label for="notificationsAlert">Notifications Alert</label><br>
-            </div>
-            <div formGroupName="2" *ngSwitchCase="2">
-                <h1> Form 3 </h1>
-                <input class="form-control" type="text" formControlName="first_name"/>
-                <input class="form-control" type="text" formControlName="last_name"/>
-                <input class="form-control" type="email" formControlName="email"/>
-                <input class="form-control" type="email" formControlName="cc_emails"/>
-            </div>
+          </div>
         </div>
-    </form>
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="subject" class="col-form-label required">Subject</label>
+          </div>
+          <div class="col-sm-9">
+            <div class="form-group row mb-2">
+              <input class="form-control" type="text" formControlName="subject" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="description" class="col-form-label required">Description</label>
+          </div>
+          <div class="col-sm-9">
+            <div class="form-group row mb-2">
+              <p-editor class="form-control" formControlName="description" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div formGroupName="1" *ngSwitchCase="1">
+        <div class="wrapper">
+          <div class="row">
+            <div class="col-lg-6">
+                <p-checkbox label="Notifications Alert" [binary]="true" formControlName="notificationsAlert" name="notificationsAlert" id="notificationsAlert"></p-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div formGroupName="2" *ngSwitchCase="2">
+        <div class="wrapper">
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="firstName" class="form-label">First Name:</label>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group row mb-2">
+                <input class="form-control" type="text" formControlName="first_name"/>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <label for="lastName" class="form-label">Last Name:</label>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group row mb-2">
+                <input class="form-control" type="text" formControlName="last_name"/>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="email" class="form-label">Email:</label>
+            </div>
+            <div class="col-sm-10">
+              <div class="form-group row mb-2">
+                <input class="form-control" type="email" formControlName="email"/>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-2">
+              <label for="cc_emails" class="form-label">Add Recipients:</label>
+            </div>
+            <div class="col-sm-10">
+              <input class="form-control" type="email" formControlName="cc_emails"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </ng-template>
 <app-wizard [items]="items" [(activeIndex)]="activeIndex" [parentForm]="wizardForm" [forms]="forms"></app-wizard>
