@@ -8,7 +8,13 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   styleUrls: ['./wizard.component.css']
 })
 export class WizardComponent implements OnInit {
+  @Input() items!: any[];
+  @Input() activeIndex!: number;
+  @Output() activeIndexChange = new EventEmitter<number>();
+  @Input() parentForm: any;
+  @Input() forms!: TemplateRef<any>;
   @ViewChild('wizardTemplate') public wizardTemplate!: TemplateRef<any>;
+
   modalRef?: BsModalRef;
   config = {
     backdrop: true,
@@ -16,14 +22,8 @@ export class WizardComponent implements OnInit {
     keyboard: false,
   };
 
-  @Input() items!: any[];
-  @Input() activeIndex!: number;
-  @Output() activeIndexChange = new EventEmitter<number>();
-  @Input() parentForm: any;
-  
   visited!: Set<number>;
 
-  @Input() forms!: TemplateRef<any>;
   constructor(private fb: UntypedFormBuilder,
               private modalService: BsModalService) { }
 
@@ -45,7 +45,7 @@ export class WizardComponent implements OnInit {
   }
 
   hide() {
-    this.modalRef!.hide();
+    this.modalRef?.hide();
     this.parentForm.reset();
     this.visited.clear();
     this.activeIndex = 0;
